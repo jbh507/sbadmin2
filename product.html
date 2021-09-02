@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .buttons {
+            width: 120px;
+            height: 40px;
+            color: white;
+            background-color: Highlight;
+        }
+
+        :disabled {
+            color: gray;
+            background-color: lightgray;
+        }
+    </style>
+    <script>
+
+
+
+
+
+        function onchangevalue(value) {
+            //버튼 on & off
+            var btnprodinfo = document.getElementById("prodinfo");
+            var btnprocess = document.getElementById("process");
+            var btnprinting = document.getElementById("printing");
+            var btngcylinder = document.getElementById("gcylinder");
+            var btnlaminating = document.getElementById("laminating");
+            var btnhardening = document.getElementById("hardening");
+            var btnslitting = document.getElementById("slitting");
+            var btnfinishing = document.getElementById("finishing");
+
+
+            var cbproduct1 = document.getElementById("product1").value;
+            var cbproduct2 = document.getElementById("product2").value;
+            var cbproduct3 = document.getElementById("product3").value;
+            var cbproduct4 = document.getElementById("product4").value;
+            var cbproduct5 = document.getElementById("product5").value;
+            var cbproduct6 = document.getElementById("product6").value;
+            var cbproduct7 = document.getElementById("product7").value;
+
+            var Onprinting = (cbproduct1 == "printing" || cbproduct2 == "printing" || cbproduct3 == "printing" || cbproduct4 == "printing" || cbproduct5 == "printing" || cbproduct6 == "printing" || cbproduct7 == "printing")
+            var Offprinting = !(cbproduct1 == "printing" && cbproduct2 == "printing" && cbproduct3 == "printing" && cbproduct4 == "printing" && cbproduct5 == "printing" && cbproduct6 == "printing" && cbproduct7 == "printing")
+            var Onlaminating = (cbproduct1 == "laminating" || cbproduct2 == "laminating" || cbproduct3 == "laminating" || cbproduct4 == "laminating" || cbproduct5 == "laminating" || cbproduct6 == "laminating" || cbproduct7 == "laminating");
+            var Offlaminating = !(cbproduct1 == "laminating" && cbproduct2 == "laminating" && cbproduct3 == "laminating" && cbproduct4 == "laminating" && cbproduct5 == "laminating" && cbproduct6 == "laminating" && cbproduct7 == "laminating");
+            var Onhardening = (cbproduct1 == "hardening" || cbproduct2 == "hardening" || cbproduct3 == "hardening" || cbproduct4 == "hardening" || cbproduct5 == "hardening" || cbproduct6 == "hardening" || cbproduct7 == "hardening");
+            var Offhardening = !(cbproduct1 == "hardening" && cbproduct2 == "hardening" && cbproduct3 == "hardening" && cbproduct4 == "hardening" && cbproduct5 == "hardening" && cbproduct6 == "hardening" && cbproduct7 == "hardening");
+            var Onslitting = (cbproduct1 == "slitting" || cbproduct2 == "slitting" || cbproduct3 == "slitting" || cbproduct4 == "slitting" || cbproduct5 == "slitting" || cbproduct6 == "slitting" || cbproduct7 == "slitting");
+            var Offslitting = !(cbproduct1 == "slitting" && cbproduct2 == "slitting" && cbproduct3 == "slitting" && cbproduct4 == "slitting" && cbproduct5 == "slitting" && cbproduct6 == "slitting" && cbproduct7 == "slitting");
+            var Onfinishing = (cbproduct1 == "finishing" || cbproduct2 == "finishing" || cbproduct3 == "finishing" || cbproduct4 == "finishing" || cbproduct5 == "finishing" || cbproduct6 == "finishing" || cbproduct7 == "finishing");
+            var Offfinishing = !(cbproduct1 == "finishing" && cbproduct2 == "finishing" && cbproduct3 == "finishing" && cbproduct4 == "finishing" && cbproduct5 == "finishing" && cbproduct6 == "finishing" && cbproduct7 == "finishing");
+
+
+            //옵션선택  printing 이 있는지
+            if (Onprinting) {
+
+                btnprinting.disabled = false;
+                btngcylinder.disabled = false;
+            }
+            else if (Offprinting) {
+                btnprinting.disabled = true;
+                btngcylinder.disabled = true;
+            }
+
+
+            //옵션선택  laminating 이 있는지
+            if (Onlaminating) {
+                btnlaminating.disabled = false;
+            }
+            else if (Offlaminating) {
+                btnlaminating.disabled = true;
+            }
+
+            //옵션선택  hardening 이 있는지
+            if (Onhardening) {
+                btnhardening.disabled = false;
+            }
+            else if (Offhardening) {
+                btnhardening.disabled = true;
+            }
+
+
+            //옵션선택  slitting 이 있는지
+            if (Onslitting) {
+                btnslitting.disabled = false;
+            }
+            else if (Offslitting) {
+                btnslitting.disabled = true;
+
+            }
+
+            //옵션선택  finishing 이 있는지
+            if (Onfinishing) {
+                btnfinishing.disabled = false;
+            }
+            else if (Offfinishing) {
+                btnfinishing.disabled = true;
+
+            }
+
+        }
+
+
+    </script>
+
+</head>
+<body>
+    <input type="button" class="buttons" id="prodinfo" value="제품정보" onclick="clickalert()" />
+    <input type="button" class="buttons" id="process" value="공정" onclick="clickalert()" />
+    <input type="button" class="buttons" id="printing" value="인쇄" onclick="clickalert()" disabled="disabled" />
+    <input type="button" class="buttons" id="gcylinder" value="동판" onclick="clickalert()" disabled="disabled" />
+    <input type="button" class="buttons" id="laminating" value="합지" onclick="clickalert()" disabled="disabled" />
+    <input type="button" class="buttons" id="hardening" value="경화" onclick="clickalert()" disabled="disabled" />
+    <input type="button" class="buttons" id="slitting" value="슬리팅" onclick="clickalert()" disabled="disabled" />
+    <input type="button" class="buttons" id="finishing" value="가공" onclick="clickalert()" disabled="disabled" />
+    <br /><br />
+
+
+    <form>
+        <select id="product1" onchange="onchangevalue(value)">
+            <option value="none">=== 선택 ===</option>
+            <option value="printing">인쇄</option>
+            <option value="laminating">합지</option>
+            <option value="hardening">경화</option>
+            <option value="slitting">슬리팅</option>
+            <option value="finishing">가공</option>
+        </select>
+    </form>
+    <br />
+    <form>
+        <select id="product2" onchange="onchangevalue(value)">
+            <option value="none">=== 선택 ===</option>
+            <option value="printing">인쇄</option>
+            <option value="laminating">합지</option>
+            <option value="hardening">경화</option>
+            <option value="slitting">슬리팅</option>
+            <option value="finishing">가공</option>
+        </select>
+    </form>
+    <br />
+    <form>
+        <select id="product3" onchange="onchangevalue(value)">
+            <option value="none">=== 선택 ===</option>
+            <option value="printing">인쇄</option>
+            <option value="laminating">합지</option>
+            <option value="hardening">경화</option>
+            <option value="slitting">슬리팅</option>
+            <option value="finishing">가공</option>
+        </select>
+    </form>
+    <br />
+    <form>
+        <select id="product4" onchange="onchangevalue(value)">
+            <option value="none">=== 선택 ===</option>
+            <option value="printing">인쇄</option>
+            <option value="laminating">합지</option>
+            <option value="hardening">경화</option>
+            <option value="slitting">슬리팅</option>
+            <option value="finishing">가공</option>
+        </select>
+    </form>
+    <br />
+    <form>
+        <select id="product5" onchange="onchangevalue(value)">
+            <option value="none">=== 선택 ===</option>
+            <option value="printing">인쇄</option>
+            <option value="laminating">합지</option>
+            <option value="hardening">경화</option>
+            <option value="slitting">슬리팅</option>
+            <option value="finishing">가공</option>
+        </select>
+    </form>
+    <br />
+    <form>
+        <select id="product6" onchange="onchangevalue(value)">
+            <option value="none">=== 선택 ===</option>
+            <option value="printing">인쇄</option>
+            <option value="laminating">합지</option>
+            <option value="hardening">경화</option>
+            <option value="slitting">슬리팅</option>
+            <option value="finishing">가공</option>
+        </select>
+    </form>
+    <br />
+    <form>
+        <select id="product7" onchange="onchangevalue(value)">
+            <option value="none">=== 선택 ===</option>
+            <option value="printing">인쇄</option>
+            <option value="laminating">합지</option>
+            <option value="hardening">경화</option>
+            <option value="slitting">슬리팅</option>
+            <option value="finishing">가공</option>
+        </select>
+    </form>
+
+
+
+</body>
+</html>
